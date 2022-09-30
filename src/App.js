@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import axios from "axios";
+import { useState } from "react";
+import "./App.css";
+// import Currencies from "./Crypto/Currencies/Currencies";
+import Search from "./Search/Search";
 
-function App() {
+// console.log(cryptoCurrencies);
+
+const url =
+  "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false";
+
+const data = axios
+  .get(url)
+  .then(function (response) {
+    // handle success
+    console.log(response);
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+  })
+  .then(function () {
+    // always executed
+  });
+
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Cryptocurrency Tracker</h1>
+      {/* <Search></Search> */}
+
+      {/* <Currencies currencies={currencies}></Currencies> */}
     </div>
   );
-}
+};
 
 export default App;
